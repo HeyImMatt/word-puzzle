@@ -3,8 +3,12 @@ $(document).ready(function () {
   $('form#user-sentence').submit(function (event) {
     event.preventDefault();
     const userSentence = $('#sentenceInput').val();
-    const result = puzzle(userSentence);
-    console.log(result)
+    if (userSentence) {
+      const result = puzzle(userSentence);
+      $('form#user-sentence').toggle();
+      $('#puzzle-sentence').append(`<p>${result}</p>`)
+      $('#puzzle-sentence').toggle();
+    } else alert("Please enter a sentence")
   });
 });
 
